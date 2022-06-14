@@ -6,9 +6,12 @@ fn main() {
     println!("pair_combi {:?}", pair_result);
     println!("input {:?}", input);
 
-    let two_sum_list: Vec<i32> = two_sum(pair_result.clone(), input, target);
+    let two_sum_list: Vec<i32> = two_sum_list(pair_result.clone(), input.clone(), target);
     println!("two_sum_list {:?}", two_sum_list);
-    let maybe_index: Option<usize> = two_sum_list.into_iter().position(|t| t == target);
+    let two_sum_list2 = two_sum(input, target);
+    println!("two_sum_list2 {:?}", two_sum_list2);
+
+    let maybe_index: Option<usize> = two_sum_list2.into_iter().position(|t| t == target);
     let index: usize = match maybe_index {
         // The division was valid
         Some(x) => x,
@@ -17,10 +20,11 @@ fn main() {
     };
     let (l_result, r_result) = pair_result[index];
     let result: Vec<i32> = [l_result, r_result].to_vec();
+    assert!(result == [0, 1]);
     println!("result {:?}", result);
 }
 
-fn two_sum(list_pair: Vec<(i32, i32)>, input: Vec<i32>, target: i32) -> Vec<i32> {
+fn two_sum_list(list_pair: Vec<(i32, i32)>, input: Vec<i32>, target: i32) -> Vec<i32> {
     let result = list_pair
         .into_iter()
         .map(|(x, y)| input[x as usize] + input[y as usize])
@@ -33,4 +37,14 @@ fn pair_combi(n: i32) -> Vec<(i32, i32)> {
         .flat_map(|x| (0..=x - 1).map(move |y| (y, x)))
         .collect::<Vec<(i32, i32)>>();
     return pair_combi;
+}
+
+fn two_sum(input: Vec<i32>, target: i32) -> Vec<i32> {
+    let n: usize = input.len();
+    println!("{:?}", n);
+    let result = (0..(n as i32))
+        .flat_map(|x| (0..=x - 1).map(move |y| (y, x))) // pair of possible combination
+        .map(|(x, y)| input[x as usize] + input[y as usize])
+        .collect::<Vec<i32>>();
+    return result;
 }
