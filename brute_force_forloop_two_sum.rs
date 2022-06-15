@@ -14,3 +14,7 @@ for x in 0..input.len() {
 let (l_result, r_result) = tuple;
 let result: Vec<i32> = [l_result as i32, r_result as i32].to_vec();
 // assert!(result == vec![0, 1]);
+
+// leetcode runtime
+// Runtime: 140 ms, faster than 5.15% of Rust online submissions for Two Sum.
+// Memory Usage: 2 MB, less than 99.20% of Rust online submissions for Two Sum.

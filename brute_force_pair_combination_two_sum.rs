@@ -26,3 +26,6 @@ fn two_sum(input: Vec<i32>, target: i32) -> Option<(i32, i32)> {
         .find(|(x, y)| (input[*x as usize] + input[*y as usize]) == target);
     return maybe_index;
 }
+// leetcode runtime
+// Runtime: 103 ms, faster than 5.15% of Rust online submissions for Two Sum.
+// Memory Usage: 2.4 MB, less than 31.82% of Rust online submissions for Two Sum.
