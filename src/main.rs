@@ -1,24 +1,12 @@
+pub mod hashmap_forloop_two_sum;
 fn main() {
     let input: Vec<i32> = vec![2, 7, 11, 15];
     let target: i32 = 9;
 
     println!("input {:?}", input);
 
-    let mut tuple = (0, 0);
+    let result = hashmap_forloop_two_sum::hash_map_forloop(input, target);
+    assert!(result == vec![0, 1]);
 
-    (0..input.len())
-        .map(|x| {
-            (0..input.len())
-                .map(|y| {
-                    if (input[x] + input[y]) == target && (x != y) {
-                        tuple = (x, y);
-                    }
-                })
-                .collect::<()>();
-        })
-        .collect::<()>();
-
-    let (l_result, r_result) = tuple;
-    let result: Vec<i32> = [l_result as i32, r_result as i32].to_vec();
     println!("result {:?}", result);
 }

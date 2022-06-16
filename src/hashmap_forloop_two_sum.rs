@@ -1,8 +1,5 @@
 use std::collections::HashMap;
-fn main() {
-    let input: Vec<i32> = vec![2, 7, 11, 15];
-    let target: i32 = 9;
-
+pub fn hash_map_forloop(input: Vec<i32>, target: i32) -> Vec<i32> {
     let mut hash_map = HashMap::<i32, usize>::new();
 
     let mut tuple = (0, 0);
@@ -26,7 +23,7 @@ fn main() {
 
     let (l_result, r_result) = tuple;
     let result: Vec<i32> = [l_result as i32, r_result as i32].to_vec();
-    // assert!(result == vec![0, 1]);
+    return result;
 }
 // leetcode runtime
 // Runtime: 0 ms, faster than 100.00% of Rust online submissions for Two Sum.
