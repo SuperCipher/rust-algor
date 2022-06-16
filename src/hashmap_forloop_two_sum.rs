@@ -12,12 +12,8 @@ fn main() {
     for y in 0..input.len() {
         let complement = target - input[y];
         match hash_map.get(&complement) {
-            Some(key) => {
-                if *key != y {
-                    tuple = (*key, y);
-                }
-            }
-            None => (),
+            Some(key) if *key != y => tuple = (*key, y),
+            _ => (),
         };
     }
 
