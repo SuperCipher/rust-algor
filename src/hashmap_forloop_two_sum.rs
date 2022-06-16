@@ -14,6 +14,13 @@ fn main() {
         match hash_map.get(&complement) {
             Some(key) if *key != y => tuple = (*key, y),
             _ => (),
+            // without guard seems to be faster
+            // Some(key) => {
+            //     if *key != y {
+            //         tuple = (*key, y);
+            //     }
+            // }
+            // None => (),
         };
     }
 
